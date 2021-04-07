@@ -10,7 +10,7 @@ namespace Tcc.Api.Model
     public class Person
     {
         [Column("id")]
-        public long IdPerson { get; set; }
+        public long Id { get; set; }
 
         [Column("first_name")]
         public string FirstName { get; set; }

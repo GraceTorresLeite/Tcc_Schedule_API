@@ -31,7 +31,7 @@ namespace Tcc.Api.Repository.Implementations
 
         public void Delete(long id)
         {
-            var result = _context.People.SingleOrDefault(p => p.IdPerson.Equals(id));
+            var result = _context.People.SingleOrDefault(p => p.Id.Equals(id));
 
             if (result != null)
             {
@@ -52,13 +52,13 @@ namespace Tcc.Api.Repository.Implementations
         }
         public Person FindByID(long id)
         {
-            return _context.People.SingleOrDefault(p => p.IdPerson.Equals(id));
+            return _context.People.SingleOrDefault(p => p.Id.Equals(id));
         }
         public Person Update(Person person)
         {
-            if (!Exists(person.IdPerson)) return null;
+            if (!Exists(person.Id)) return null;
 
-            var result = _context.People.SingleOrDefault(p => p.IdPerson.Equals(person.IdPerson));
+            var result = _context.People.SingleOrDefault(p => p.Id.Equals(person.Id));
 
             if (result != null)
             {
@@ -77,7 +77,7 @@ namespace Tcc.Api.Repository.Implementations
 
         public bool Exists(long id)
         {
-            return _context.People.Any(p => p.IdPerson.Equals(id));
+            return _context.People.Any(p => p.Id.Equals(id));
         }
     }
 }
