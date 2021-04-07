@@ -10,11 +10,11 @@
 
 **View Swagger**
 
-<img src="/img/swagger.png" width="500" height="200">
+<img src="/img/swagger.png" width="600" height="700">
 
 **View import Swagger in Postman**
 
-<img src="/img/postman.png" width="500" height="200">
+<img src="/img/postman.png" width="700" height="400">
 
 **References**
 
