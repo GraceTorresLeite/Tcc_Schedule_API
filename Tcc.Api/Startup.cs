@@ -77,6 +77,8 @@ namespace Tcc.Api
             services.AddScoped<ITypeServiceRepository, TypeServiceRepositoryImplementation>();
             services.AddScoped<IScheduleBusiness, ScheduleBusinessImplementation>();
             services.AddScoped<IScheduleRepository, ScheduleRepositoryImplementation>();
+            services.AddScoped<IScheduleFormsBusiness, ScheduleFormsBusinessImplementation>();
+            services.AddScoped<IScheduleFormRepository, ScheduleFormRepositoryImplementation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

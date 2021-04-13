@@ -1,0 +1,10 @@
+CREATE TABLE `schedule_form` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`first_name` VARCHAR(20) NOT NULL DEFAULT '0',
+	`email` VARCHAR(20) NOT NULL DEFAULT '0',
+	`address` VARCHAR(80) NOT NULL DEFAULT '0',
+	`phone` VARCHAR(12) NOT NULL DEFAULT '0',
+	`service` int(2) NOT null,
+	`date` DATETIME NOT NULL,
+	PRIMARY KEY (id)
+);
