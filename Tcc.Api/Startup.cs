@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -71,12 +69,6 @@ namespace Tcc.Api
             });
 
             // ADICIONAR INJEÇÃO DE DEPENDÊNCIA - > depois ir no Personcontroller informar este serviço
-            services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
-            services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
-            services.AddScoped<ITypeServiceBusiness, TypeServiceBusinessImplementation>();
-            services.AddScoped<ITypeServiceRepository, TypeServiceRepositoryImplementation>();
-            services.AddScoped<IScheduleBusiness, ScheduleBusinessImplementation>();
-            services.AddScoped<IScheduleRepository, ScheduleRepositoryImplementation>();
             services.AddScoped<IScheduleFormsBusiness, ScheduleFormsBusinessImplementation>();
             services.AddScoped<IScheduleFormRepository, ScheduleFormRepositoryImplementation>();
         }

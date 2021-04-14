@@ -1,10 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Tcc.Api.Business;
 using Tcc.Api.Model;
 
@@ -65,8 +60,6 @@ namespace Tcc.Api.Controllers
         [ProducesResponseType(401)]
         public IActionResult Put([FromBody] ScheduleForm scheduleForm)
         {
-            var form = new ScheduleForm();
-            //form.Service
             if (scheduleForm == null) return BadRequest();
             var updateScheduleForm = _scheduleFormsBusiness.Update(scheduleForm);
             return Ok(updateScheduleForm);

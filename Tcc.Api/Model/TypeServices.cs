@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Tcc.Api.Model
 {
-    public enum ServiceTypes
+    public enum TypeServices
     {
         SOBRANCELHA,
         BUÇO,
@@ -18,18 +15,19 @@ namespace Tcc.Api.Model
 
     public class ServiceTypeWrapper
     {
-        public static ServiceTypes? ServiceTypeById(int service)
+        public static TypeServices? ServiceTypeById(int service)
         {
 
-            foreach (var serviceType in Enum.GetValues(typeof(ServiceTypes)))
+            foreach (var serviceType in Enum.GetValues(typeof(TypeServices)))
             {
 
                 if (serviceType.GetHashCode() == service)
                 {
-                    return (ServiceTypes)serviceType;
+                    return (TypeServices)serviceType;
                 }
             }
             return null;
         }
     }
+
 }

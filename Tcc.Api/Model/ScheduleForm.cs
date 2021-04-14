@@ -38,12 +38,12 @@ namespace Tcc.Api.Model
         [Required]
         public DateTime Date { get; set; }
 
-        public ServiceTypes GetService(int service)
+        public TypeServices GetService(int service)
         {
-           return (ServiceTypes)ServiceTypeWrapper.ServiceTypeById(service);
+           return (TypeServices)ServiceTypeWrapper.ServiceTypeById(service);
         }
 
-        public void SetService(ServiceTypes types)
+        public void SetService(TypeServices types)
         {
             this.Service = types.GetHashCode();
         }

@@ -4,7 +4,7 @@ CREATE TABLE `schedule_form` (
 	`email` VARCHAR(20) NOT NULL DEFAULT '0',
 	`address` VARCHAR(80) NOT NULL DEFAULT '0',
 	`phone` VARCHAR(12) NOT NULL DEFAULT '0',
-	`service` int(2) NOT null,
-	`date` DATETIME NOT NULL,
+	`service` int(2) NOT NULL DEFAULT '0',
+	`date` DATETIME NOT NULL DEFAULT '0000/00/00 00:00:00',
 	PRIMARY KEY (id)
 );
