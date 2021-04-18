@@ -1,15 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Tcc.Api.Model.Base;
 
 namespace Tcc.Api.Model
 {
     [Table("schedule_form")]
-    public class ScheduleForm
+    public class ScheduleForm : BaseEntity
     {
-        [Column("id")]
-        public long Id { get; set; }
-
+  
         [Column("first_name")]
         [Required]
         public string FirstName { get; set; }

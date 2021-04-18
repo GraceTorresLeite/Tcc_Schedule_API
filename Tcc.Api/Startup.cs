@@ -13,7 +13,8 @@ using Tcc.Api.Business;
 using Tcc.Api.Business.Implementations;
 using Tcc.Api.Model.Context;
 using Tcc.Api.Repository;
-using Tcc.Api.Repository.Implementations;
+using Tcc.Api.Repository.Generic;
+
 
 namespace Tcc.Api
 {
@@ -70,7 +71,8 @@ namespace Tcc.Api
 
             // ADICIONAR INJEÇÃO DE DEPENDÊNCIA - > depois ir no Personcontroller informar este serviço
             services.AddScoped<IScheduleFormsBusiness, ScheduleFormsBusinessImplementation>();
-            services.AddScoped<IScheduleFormRepository, ScheduleFormRepositoryImplementation>();
+            // services.AddScoped<IScheduleFormRepository, ScheduleFormRepositoryImplementation>();
+            services.AddScoped(typeof(IRepository<>),typeof(GenericRepositoryImplementation<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
