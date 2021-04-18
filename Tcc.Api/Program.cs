@@ -1,12 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Tcc.Api.Model;
 
 namespace Tcc.Api
 {
@@ -23,7 +16,5 @@ namespace Tcc.Api
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-
-       
     }
 }

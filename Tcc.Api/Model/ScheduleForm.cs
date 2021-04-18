@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Tcc.Api.Model
 {
@@ -38,6 +35,10 @@ namespace Tcc.Api.Model
         [Required]
         public DateTime Date { get; set; }
 
+        public ScheduleForm()
+        {
+                
+        }
         public TypeServices GetService(int service)
         {
            return (TypeServices)ServiceTypeWrapper.ServiceTypeById(service);
@@ -47,6 +48,5 @@ namespace Tcc.Api.Model
         {
             this.Service = types.GetHashCode();
         }
-        
     }
 }
