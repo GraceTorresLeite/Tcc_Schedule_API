@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Tcc.Api.Data.Converter.Implementations;
+using Tcc.Api.Data.VO;
 using Tcc.Api.Model;
 using Tcc.Api.Repository;
 
@@ -7,14 +9,18 @@ namespace Tcc.Api.Business.Implementations
     public class ScheduleFormsBusinessImplementation : IScheduleFormsBusiness
     {
         private readonly IRepository<ScheduleForm> _repository;
+        private readonly ScheduleFormConverter _converter;
        public ScheduleFormsBusinessImplementation(IRepository<ScheduleForm> repository)
         {
             _repository = repository;
+            _converter = new ScheduleFormConverter();
         }
 
-        public ScheduleForm Create(ScheduleForm scheduleForm)
+        public ScheduleFormVO Create(ScheduleFormVO ScheduleFormVO)
         {
-            return _repository.Create(scheduleForm);
+            var scheduleFormEntity = _converter.Parse(ScheduleFormVO);
+            scheduleFormEntity = _repository.Create(scheduleFormEntity);
+            return _converter.Parse(scheduleFormEntity);
         }
 
         public void Delete(long id)
@@ -22,19 +28,21 @@ namespace Tcc.Api.Business.Implementations
             _repository.Delete(id);
         }
 
-        public List<ScheduleForm> FindAll()
+        public List<ScheduleFormVO> FindAll()
         {
-            return _repository.FindAll();
+            return _converter.Parse(_repository.FindAll());
         }
 
-        public ScheduleForm FindByID(long id)
+        public ScheduleFormVO FindByID(long id)
         {
-            return _repository.FindByID(id);
+            return _converter.Parse(_repository.FindByID(id));
         }
 
-        public ScheduleForm Update(ScheduleForm scheduleForm)
+        public ScheduleFormVO Update(ScheduleFormVO ScheduleFormVO)
         {
-            return _repository.Update(scheduleForm);
+            var scheduleFormEntity = _converter.Parse(ScheduleFormVO);
+            scheduleFormEntity = _repository.Update(scheduleFormEntity);
+            return _converter.Parse(scheduleFormEntity);
         }
     }
 }

@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Tcc.Api.Model;
+﻿using System.Collections.Generic;
+using Tcc.Api.Data.VO;
 
 namespace Tcc.Api.Business
 {
-   public interface IScheduleFormsBusiness
+    public interface IScheduleFormsBusiness
     {
-        ScheduleForm Create(ScheduleForm scheduleForm);
-        ScheduleForm FindByID(long id);
-        List<ScheduleForm> FindAll();
-        ScheduleForm Update(ScheduleForm scheduleForm);
+        ScheduleFormVO Create(ScheduleFormVO scheduleFormVO);
+        ScheduleFormVO FindByID(long id);
+        List<ScheduleFormVO> FindAll();
+        ScheduleFormVO Update(ScheduleFormVO scheduleFormVO);
         void Delete(long id);
     }
 }

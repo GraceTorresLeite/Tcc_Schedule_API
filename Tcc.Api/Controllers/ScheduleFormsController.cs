@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Tcc.Api.Business;
+using Tcc.Api.Data.VO;
 using Tcc.Api.Model;
 
 namespace Tcc.Api.Controllers
@@ -47,21 +48,21 @@ namespace Tcc.Api.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public IActionResult Post([FromBody] ScheduleForm scheduleForm)
+        public IActionResult Post([FromBody] ScheduleFormVO scheduleFormVO)
         {
-            if (scheduleForm == null) return BadRequest();
-            var createPerson = _scheduleFormsBusiness.Create(scheduleForm);
-            return Ok(createPerson);
+            if (scheduleFormVO == null) return BadRequest();
+            var createScheduleForm = _scheduleFormsBusiness.Create(scheduleFormVO);
+            return Ok(createScheduleForm);
         }
 
         [HttpPut]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public IActionResult Put([FromBody] ScheduleForm scheduleForm)
+        public IActionResult Put([FromBody] ScheduleFormVO scheduleFormVO)
         {
-            if (scheduleForm == null) return BadRequest();
-            var updateScheduleForm = _scheduleFormsBusiness.Update(scheduleForm);
+            if (scheduleFormVO == null) return BadRequest();
+            var updateScheduleForm = _scheduleFormsBusiness.Update(scheduleFormVO);
             return Ok(updateScheduleForm);
         }
 
