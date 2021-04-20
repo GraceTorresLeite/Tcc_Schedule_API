@@ -12,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using Tcc.Api.Business;
 using Tcc.Api.Business.Implementations;
+using Tcc.Api.Hypermedia.Enricher;
+using Tcc.Api.Hypermedia.Filters;
 using Tcc.Api.Model.Context;
 using Tcc.Api.Repository;
 using Tcc.Api.Repository.Generic;
@@ -59,6 +61,11 @@ namespace Tcc.Api
 
             })
                 .AddXmlSerializerFormatters();
+
+            var filterOptions = new HyperMediaFilterOptions();
+            filterOptions.ContentResponseEnricherList.Add(new ScheduleFormEnricher());
+
+            services.AddSingleton(filterOptions);
 
             //Adicionando versionamento API
             services.AddApiVersioning();
@@ -112,6 +119,7 @@ namespace Tcc.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute("DefaultApi","{controller=values}/{id?}");
             });
         }
 

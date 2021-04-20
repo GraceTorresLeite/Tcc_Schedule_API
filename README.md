@@ -10,11 +10,19 @@
 
 **View Swagger**
 
-<img src="/img/swagger.png" width="600" height="700">
+<img src="/img/swagger_hateos.png" width="600" height="700">
 
 **View import Swagger in Postman**
 
 <img src="/img/postman.png" width="700" height="400">
+
+**View React**
+
+<img src="/img/rest_client.png" width="1000" height="400">
+
+**View React**
+
+<img src="/img/api_xml.png" width="700" height="400">
 
 **References**
 

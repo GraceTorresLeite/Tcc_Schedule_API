@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Tcc.Api.Hypermedia;
+using Tcc.Api.Hypermedia.Abstract;
 using Tcc.Api.Model;
 using Tcc.Api.Model.Base;
 
 namespace Tcc.Api.Data.VO
 {
-    public class ScheduleFormVO 
+    public class ScheduleFormVO : ISupportsHyperMedia
     {
   
         public long Id { get; set; }
@@ -16,6 +19,7 @@ namespace Tcc.Api.Data.VO
         public string Phone { get; set; }     
         public int Service { get; set; }
         public DateTime Date { get; set; }
+        public List<HyperMediaLink> Links { get; set; } = new List<HyperMediaLink>();
 
         public ScheduleFormVO()
         {

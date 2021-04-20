@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Tcc.Api.Business;
 using Tcc.Api.Data.VO;
+using Tcc.Api.Hypermedia.Filters;
 using Tcc.Api.Model;
 
 namespace Tcc.Api.Controllers
@@ -21,6 +22,7 @@ namespace Tcc.Api.Controllers
         }
 
         [HttpGet("")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         [ProducesResponseType(200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
@@ -31,6 +33,7 @@ namespace Tcc.Api.Controllers
         }
 
         [HttpGet("{id}")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         [ProducesResponseType(200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
@@ -45,6 +48,7 @@ namespace Tcc.Api.Controllers
         }
 
         [HttpPost]
+        [TypeFilter(typeof(HyperMediaFilter))]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
@@ -56,6 +60,7 @@ namespace Tcc.Api.Controllers
         }
 
         [HttpPut]
+        [TypeFilter(typeof(HyperMediaFilter))]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
@@ -67,6 +72,7 @@ namespace Tcc.Api.Controllers
         }
 
         [HttpDelete("{id}")]
+      //  [TypeFilter(typeof(HyperMediaFilter))]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
