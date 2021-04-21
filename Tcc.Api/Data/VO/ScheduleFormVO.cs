@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using Tcc.Api.Hypermedia;
 using Tcc.Api.Hypermedia.Abstract;
 using Tcc.Api.Model;
-using Tcc.Api.Model.Base;
 
 namespace Tcc.Api.Data.VO
 {

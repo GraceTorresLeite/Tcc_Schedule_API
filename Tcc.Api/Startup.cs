@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Rewrite;
@@ -5,19 +7,24 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Tcc.Api.Business;
 using Tcc.Api.Business.Implementations;
+using Tcc.Api.Configurations;
 using Tcc.Api.Hypermedia.Enricher;
 using Tcc.Api.Hypermedia.Filters;
 using Tcc.Api.Model.Context;
 using Tcc.Api.Repository;
 using Tcc.Api.Repository.Generic;
-
+using Tcc.Api.Services;
+using Tcc.Api.Services.Implementations;
 
 namespace Tcc.Api
 {
@@ -40,12 +47,54 @@ namespace Tcc.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //setar valores do appSettings
+            var tokenConfigurations = new TokenConfiguration();
+
+            // armazena os valores na classe
+            new ConfigureFromConfigurationOptions<TokenConfiguration>(
+                Configuration.GetSection("TokenConfigurations")
+                )
+                .Configure(tokenConfigurations);
+
+            //injetando no serviço
+            services.AddSingleton(tokenConfigurations);
+
+            // parametros de autenticação
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(options => 
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = tokenConfigurations.Issuer,
+                        ValidAudience = tokenConfigurations.Audience,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfigurations.Secret))
+                    };
+                });
+
+            // add autorização
+            services.AddAuthorization(auth =>
+            {
+                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                    .RequireAuthenticatedUser()
+                    .Build());
+            });
+
             services.AddCors(options => options.AddDefaultPolicy(builder =>
             {
                 builder.AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader();
             }));
+
             services.AddControllers();
            
             var connection = Configuration["MySQLConnection:MySQLConnectionString"]; // acessa o arquivo appsetings
@@ -93,6 +142,12 @@ namespace Tcc.Api
 
             // ADICIONAR INJEÇÃO DE DEPENDÊNCIA - > depois ir no Personcontroller informar este serviço
             services.AddScoped<IScheduleFormsBusiness, ScheduleFormsBusinessImplementation>();
+            services.AddScoped<ILoginBusiness, LoginBusinessImplementation>();
+
+            services.AddTransient<ITokenService,TokenService>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
+
             // services.AddScoped<IScheduleFormRepository, ScheduleFormRepositoryImplementation>();
             services.AddScoped(typeof(IRepository<>),typeof(GenericRepositoryImplementation<>));
         }

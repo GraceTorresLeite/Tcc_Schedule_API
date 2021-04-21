@@ -56,7 +56,7 @@ namespace Tcc.Api.Repository.Generic
             return dataset.Any(p => p.Id.Equals(id));
         }
 
-            public List<T> FindAll()
+        public List<T> FindAll()
         {
             return dataset.ToList();
         }
