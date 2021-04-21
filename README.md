@@ -18,7 +18,7 @@
 
 **View React**
 
-<img src="/img/rest_client.png" width="800" height="400">
+<img src="/img/rest_client.png" width="800" height="300">
 
 **View Localhost**
 
