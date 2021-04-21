@@ -10,7 +10,7 @@
 
 **View Swagger**
 
-<img src="/img/swagger_security.png" width="600" height="700">
+<img src="/img/swagger_security.png" width="400" height="600">
 
 **View import Swagger in Postman**
 
@@ -18,7 +18,7 @@
 
 **View React**
 
-<img src="/img/rest_client.png" width="1000" height="400">
+<img src="/img/rest_client.png" width="700" height="400">
 
 **View Localhost**
 
@@ -27,4 +27,5 @@
 **References**
 
 [Microsoft docs app .NET + C# ](https://docs.microsoft.com/pt-br/learn/modules/build-web-api-aspnet-core/5-implement-crud)
+
 [JSON Web Tokens](https://jwt.io/)
