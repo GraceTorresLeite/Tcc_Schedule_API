@@ -10,7 +10,7 @@
 
 **View Swagger**
 
-<img src="/img/swagger_security.png" width="400" height="600">
+<img src="/img/swagger_security.png" width="400" height="450">
 
 **View import Swagger in Postman**
 
@@ -18,7 +18,7 @@
 
 **View React**
 
-<img src="/img/rest_client.png" width="800" height="300">
+<img src="/img/rest_client.png" width="800" height="200">
 
 **View Localhost**
 
