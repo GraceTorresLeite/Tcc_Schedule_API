@@ -29,3 +29,5 @@
 [Microsoft docs app .NET + C# ](https://docs.microsoft.com/pt-br/learn/modules/build-web-api-aspnet-core/5-implement-crud)
 
 [JSON Web Tokens](https://jwt.io/)
+
+[QRCode](https://www.qr-code-generator.com/free-qr-code-creator/?ut_source=google_c&ut_medium=cpc&ut_campaign=g_en_dsa&ut_content=home&ut_term=_b&gclid=CjwKCAjw7J6EBhBDEiwA5UUM2jfQfFGv2aP_fNgtm238Gt24knTmxELlNxncQY81cd-1VZnUxD_kvBoC138QAvD_BwE)
